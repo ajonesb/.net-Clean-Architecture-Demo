@@ -1,4 +1,3 @@
-
 # Clean Architecture API Example
 
 This project demonstrates a practical implementation of **Clean Architecture** in a .NET-based Web API. It showcases how to structure a maintainable, scalable, and testable application by separating concerns into multiple layers.
@@ -61,6 +60,7 @@ CleanArchitectureDemo/
 Defines the core business entities and rules.
 
 **`User.cs`**
+
 ```csharp
 namespace CleanArchitecture.Domain.Entities;
 
@@ -79,6 +79,7 @@ public class User
 Contains business use cases and orchestrates application logic.
 
 **`IUserRepository.cs`**
+
 ```csharp
 namespace CleanArchitecture.Application.Interfaces;
 
@@ -89,6 +90,7 @@ public interface IUserRepository
 ```
 
 **`CreateUserCommand.cs`**
+
 ```csharp
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Domain.Entities;
@@ -120,6 +122,7 @@ public class CreateUserCommand : ICreateUserCommand
 Implements the `IUserRepository` interface for data persistence.
 
 **`UserRepository.cs`**
+
 ```csharp
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Domain.Entities;
@@ -143,6 +146,7 @@ public class UserRepository : IUserRepository
 Exposes the application via API endpoints.
 
 **`UsersController.cs`**
+
 ```csharp
 using CleanArchitecture.Application.Users.Commands;
 using CleanArchitecture.Domain.Entities;
@@ -184,6 +188,7 @@ public class UsersController : ControllerBase
 ```
 
 **`Program.cs`**
+
 ```csharp
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.Users.Commands;
@@ -226,29 +231,26 @@ app.Run();
 ### Setup Instructions
 
 1. Clone this repository:
-   ```bash
-   git clone <repository-url>
-   cd CleanArchitectureDemo
-   ```
+
+   `git clone <repository-url>`
+   `cd CleanArchitectureDemo`
 
 2. Restore dependencies:
-   ```bash
-   dotnet restore
-   ```
+
+   `dotnet restore`
 
 3. Build the project:
-   ```bash
-   dotnet build
-   ```
+
+   `dotnet build`
 
 4. Run the application:
-   ```bash
-   dotnet run --project CleanArchitecture.Presentation
-   ```
+
+   `dotnet run --project CleanArchitecture.Presentation`
 
 5. Access the API:
    - Open [http://localhost:5258/api/users](http://localhost:5258/api/users) to check the health endpoint.
    - Use Postman or a similar tool to test the `POST /api/users` endpoint.
+   - Swagger : `http://localhost:5258/swagger`
 
 ---
 
@@ -257,12 +259,15 @@ app.Run();
 ### Common Issues and Fixes
 
 1. **Namespace Errors**:
+
    - Missing `using` directives caused build errors. Fixed by ensuring all namespaces were correctly imported.
 
 2. **Unregistered Dependencies**:
+
    - `IUserRepository` and `ICreateUserCommand` were not registered in `Program.cs`. Resolved by adding them to the DI container.
 
 3. **HTTPS Warning**:
+
    - Added `UseHttpsRedirection` in `Program.cs` to resolve startup warnings.
 
 4. **Missing Endpoints**:
@@ -273,7 +278,9 @@ app.Run();
 ## Example Requests
 
 ### GET `/api/users`
+
 Response:
+
 ```json
 {
   "message": "Users API is working!"
@@ -281,14 +288,18 @@ Response:
 ```
 
 ### POST `/api/users`
+
 Request:
+
 ```json
 {
   "name": "John Doe",
   "email": "john.doe@example.com"
 }
 ```
+
 Response:
+
 ```json
 "User created successfully."
 ```

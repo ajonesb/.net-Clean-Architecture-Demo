@@ -1,0 +1,52 @@
+# Build output folders
+bin/
+obj/
+
+# Visual Studio Code settings
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+*.log
+
+# ASP.NET Temporary files
+**/.vs/
+**/.nuget/
+**/.tool/
+**/.vsconfig
+wwwroot/
+
+# Dependency directories
+node_modules/
+packages/
+
+# Logs and temp files
+*.log
+*.tlog
+*.ide
+*.sln.ide
+*.swp
+
+# Secrets and settings
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# MacOS & Linux system files
+.DS_Store
+._*
+
+# JetBrains Rider project files
+.idea/
+
+# Resharper
+.ReSharper
+_ReSharper.Caches
+
+# Rider settings
+.idea/
+*.iml
